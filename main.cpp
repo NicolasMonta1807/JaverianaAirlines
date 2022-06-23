@@ -655,7 +655,7 @@ void pasabordo(Tident pasajeros[], int Tam)
 
     cout << endl;
 
-    cout << "Digite el código del pasajero para generar el pasabordo: ";
+    cout << "Digite el cï¿½digo del pasajero para generar el pasabordo: ";
     cin >> codigo;
 
     for (int i = 0; i < Tam; i++)
