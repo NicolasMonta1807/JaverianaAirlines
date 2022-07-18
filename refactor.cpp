@@ -21,6 +21,8 @@ struct Passenger{
 
 int menu();
 
+bool validateMenu(int option);
+
 // Initial state of airplane seats
 int SEATS[12][6]
 {
@@ -55,9 +57,17 @@ int main()
     system("PAUSE");
     system("CLS");
 
-    menuOption = menu();
 
-    cout << "You chose: "<< menuOption << endl;
+    //Prompting for menu option
+    while(menuOption != -1)
+    {
+        menuOption = menu();
+        if(validateMenu(menuOption))
+        {
+            
+        }
+    }
+    
 
     return 0;
 }
@@ -77,4 +87,15 @@ int menu()
     cin >> option;
 
     return option;
+}
+
+bool validateMenu(int option)
+{
+    if (option < -1 || option > 7)
+    {
+        cout << "Invalid option. Try again" << endl;
+        return false;
+    }
+
+    return true;
 }
