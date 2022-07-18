@@ -21,7 +21,9 @@ struct Passenger{
 
 int menu();
 
-bool validateMenu(int option);
+bool validateMenu();
+
+void optionManager();
 
 // Initial state of airplane seats
 int SEATS[12][6]
@@ -40,15 +42,15 @@ int SEATS[12][6]
     {0,0,0,0,0,0}
 };
 
+// Initial variables declaring
+Passenger passengers[72];
+
+int menuOption = 0, codePlaceholder = 100, reserves = 0;
+
+char saveOption;
+
 int main()
 {
-    // Initial variables declaring
-    Passenger passengers[72];
-
-    int menuOption = 0, codePlaceholder = 100, reserves = 0;
-
-    char saveOption;
-
     // Welcome greeting
     cout << "*****************************" << endl;
     cout << "Welcome to Javeriana Airlines" << endl;
@@ -62,9 +64,11 @@ int main()
     while(menuOption != -1)
     {
         menuOption = menu();
-        if(validateMenu(menuOption))
+
+        if(validateMenu())
         {
-            
+            // Call function depending on user input
+            optionManager();
         }
     }
     
@@ -89,13 +93,50 @@ int menu()
     return option;
 }
 
-bool validateMenu(int option)
+bool validateMenu()
 {
-    if (option < -1 || option > 7)
+    if (menuOption < -1 || menuOption > 7)
     {
         cout << "Invalid option. Try again" << endl;
         return false;
     }
 
     return true;
+}
+
+void optionManager()
+{
+    switch (menuOption)
+    {
+    case 1:
+        newPassenger();
+        break;
+    
+    case 2:
+        showPassengers();
+        break;
+    
+    case 3:
+        showSeats();
+        break;
+    
+    case 4:
+        removePassenger();
+        break;
+    
+    case 5:
+        sortPassengers();
+        break;
+    
+    case 6:
+        generateTicket();
+        break;
+    
+    case 7:
+        saveData();
+        break;
+
+    default:
+        break;
+    }
 }
