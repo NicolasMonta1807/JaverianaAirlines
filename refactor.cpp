@@ -22,9 +22,7 @@ struct Passenger{
 
 int menu();
 
-bool validateMenu();
-
-void optionManager();
+bool validateMenu(int menuOption);
 
 void newPassenger(Passenger passengers[], int reserves, int codePlaceholder);
 
@@ -79,7 +77,7 @@ int main()
     {
         menuOption = menu();
 
-        if(validateMenu())
+        if(validateMenu(menuOption))
         {
             switch (menuOption)
             {
@@ -139,7 +137,7 @@ int menu()
     return option;
 }
 
-bool validateMenu()
+bool validateMenu(int menuOption)
 {
     if (menuOption < -1 || menuOption > 7)
     {
